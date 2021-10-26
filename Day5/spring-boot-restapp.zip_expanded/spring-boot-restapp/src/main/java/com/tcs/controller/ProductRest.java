@@ -37,16 +37,16 @@ public class ProductRest {
 	}
 	// product/1, product/2, product/3
 	@GetMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Product findProduct(@PathVariable("id") int productId) {
+	public Product findProduct(@PathVariable("id") int productId) throws ProductNotFoundException {
 		return service.fetchProductById(productId);
 	}
 	// product/1/15000
 	@PutMapping(path = "{id}/{price}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Product updateProductPrice(@PathVariable("id") int id, @PathVariable("price") double price) {
+	public Product updateProductPrice(@PathVariable("id") int id, @PathVariable("price") double price) throws ProductNotFoundException {
 		return service.updateProductPrice(id, price);
 	}
 	@DeleteMapping(path = "{id}")
-	public String deleteProduct(@PathVariable("id") int id) {
+	public String deleteProduct(@PathVariable("id") int id) throws ProductNotFoundException{
 		service.deleteProductById(id);
 		// we are not sure the product is really deleting or not, this can be avoided with 
 		// exceptions
