@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+<bean scope="prototype" class="com.tcs.service.Test" id="t"/>
+
+<bean class="com.tcs.dao.Datasource" id="ds">
+
+<property value="mysqluser" name="username"/>
+
+<property value="Pa$$w0rd" name="password"/>
+
+<property value="jdbc:mysql://ip:port" name="url"/>
+
+</bean>
+
+
+<bean class="com.tcs.dao.CustomerDao" id="dao">
+
+<property name="datasource" ref="ds"/>
+
+</bean>
+
+<bean class="com.tcs.service.CustomerService" id="service">
+
+<constructor-arg ref="dao" index="0"/>
+
+</bean>
+
+</beans>
