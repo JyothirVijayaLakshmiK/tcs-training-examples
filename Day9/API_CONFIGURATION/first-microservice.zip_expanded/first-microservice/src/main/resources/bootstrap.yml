@@ -1,0 +1,4 @@
+# Bootstrap is loaded before any configuration file
+# To configure the logical name you can use spring.application.name
+
+spring:  application:    name: HELLO-FIRST-MS

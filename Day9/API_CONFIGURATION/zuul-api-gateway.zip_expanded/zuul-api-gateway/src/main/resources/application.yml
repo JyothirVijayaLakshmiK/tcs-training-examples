@@ -1,0 +1,13 @@
+server:
+  port: 5555
+# expose the endpoints in actuator to see the proxy urls
+management:  endpoints:    web:      exposure:        include: "*"
+# registering this api gateway in eureka server or service discovery
+eureka:  client:    register-with-eureka: true
+    fetch-registry: true
+
+# configuring the endpoints of other microservices
+zuul:  ignored-services: "*"
+  prefix: /zuulapi
+  routes:    HELLO-FIRST-MS: /one/**
+    HELLO-SECOND-MS: /two/**

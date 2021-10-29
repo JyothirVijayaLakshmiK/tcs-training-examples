@@ -1,0 +1,3 @@
+# mention the port of your microservice
+server:  port: 9091
+# you don't need to mention to register with eureka 
